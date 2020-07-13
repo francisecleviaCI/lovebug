@@ -58,6 +58,7 @@ const matchRandomly = function(client) {
   // return randomClient(otherClients);
 }
 const reversal = clients.reverse(); //***added reverse function as global. Does that mess up matching the client names and order correspondence?//
+const reversalNames = names.reverse();
 const getRank = function(client) {
   // this is backwards or something? they're supposed to be ranked
   // from lowest to highest, and the top one (spider, obviously) should
