@@ -39,31 +39,29 @@ const randomClient = function(clients) {
 
 }
 
-const remainingPool = [] //**added**
-const matchRandomly = function(client) {
+
+const matchRandomly = function(client) { //***WORKS */
   // get our client's location within our system
   const clientLocation = clients.indexOf(client);
 
   // find all the clients before our client in the system
   const clientsBeforeOurClient = clients.slice(0, clientLocation);
   // find all the clients after our client in the system
-  const clientsAfterOurClient = clients.slice(clientLocation);
+  const clientsAfterOurClient = clients.slice(clientLocation + 1);//**added index after client */
   // add them together
-  const otherClients = clientsBeforeOurClient + clientsAfterOurClient;
+  const otherClients = clientsBeforeOurClient.concat(clientsAfterOurClient);//**added .concat to merge */
+  // console.log(otherClients);
   
   // exclude our client from matches by making an array of everyone else
-  remainingPool.push(otherClients); //??
+ 
   // return a random client from the remaining pool
-  return randomClient(remainingPool);
-  // return randomClient(otherClients);
+  return randomClient(otherClients);
 }
-const reversal = clients.reverse(); //***added reverse function as global. Does that mess up matching the client names and order correspondence?//
+
+
+const reversal = clients.reverse(); //***added reverse function as global.//
 const reversalNames = names.reverse();
 const getRank = function(client) {
-  // this is backwards or something? they're supposed to be ranked
-  // from lowest to highest, and the top one (spider, obviously) should
-  // be ranked #1
-
 
   return clients.indexOf(client) +1 //**WORKS */
 }
